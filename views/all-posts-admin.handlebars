@@ -1,0 +1,14 @@
+{{#each posts as |post|}} 
+<a href="/dashboard/edit/{{post.id}}">
+<div>
+    <h2>
+        {{post.title}}
+    </h2>
+    <p>Posted by {{post.User.username}} on {{format_date post.updatedAt}}</p>
+</div>
+</a>
+<div>
+    <a href="/dashboard/new">
+        <button id="new-post">Add new post</button>
+    </a>
+</div>
