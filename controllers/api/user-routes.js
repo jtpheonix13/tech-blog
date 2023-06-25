@@ -8,10 +8,14 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
-    // TODO: save the user id, username, and loggedIn status to the req.session
+    //save the user id, username, and loggedIn status to the req.session
+    req.session.user_id = newUser.id;
+    req.session.username = newUser.username;
+    req.session.loggedIn = true;
 
-
-    res.json(newUser);
+    req.session.save(() => {
+      res.status(200).json(newUser.username);
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -37,7 +41,14 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // TODO: save the user id, username, and loggedIn status to the req.session
+    //save the user id, username, and loggedIn status to the req.session
+    req.session.user_id = user.id;
+    req.session.username = user.username;
+    req.session.loggedIn = true;
+
+    req.session.save(() => {
+      res.status(200).json({ user, message: 'You are now logged in.'});
+    });
 
 
     res.json({ user, message: 'You are now logged in!' });
