@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     });
 
     //Render the 'all-posts' template with the posts data
-    res.render('all-posts', { posts, loggedIn: req.session.loggedIn});
+    res.render('all-posts', { post, loggedIn: req.session.loggedIn});
 
   } catch (err) {
     res.status(500).json(err);
