@@ -1,14 +1,9 @@
-<div>
-    <h2>
-        All Posts
-    </h2>
-</div>
 {{#each post as |post|}}
     <div>
         <div>
-            <a href="/post/{{post.id}}">
+            <a class="card" href="/post/{{post.id}}">
                 <div>
-                    <h3>
+                    <h3 class="card-header">
                         {{post.title}}
                     </h3>
                     <p>

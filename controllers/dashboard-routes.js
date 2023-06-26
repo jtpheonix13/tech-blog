@@ -15,7 +15,7 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     // render dashboard page with posts
-    res.render('all-post-admin', {posts, logged_in: req.session.logged_in, layout: 'dashboard'});
+    res.render('all-posts-admin', {posts, logged_in: req.session.logged_in, layout: 'dashboard'});
 
 
   } catch (err) {

@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Blog</title>
-    <link rel="stylesheet" type="text/css" src="../../public/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header id="header">
-        <div>
-            <h1>The Tech Blog</h1>
-        </div>
-        <nav>
+    <div class="flex-column ">
+        <header class="navbar">
+            <nav class="nav-item">
             {{#if loggedIn}}
             <div>
                 <a href="/">Home</a>
                 <a href="/dashboard">Dashboard</a>
-                <a href="/">Log out</a>
+                <a href="/" id="logout-link">Log Out</a>
             </div>
             {{else}}
             <div>
@@ -26,15 +24,18 @@
             </div>
             {{/if}}
         </nav>
-    </header>
+        <p class="app-title justify-space-around">The Tech Blog!</p>
+        </header>
+    
     {{!-- The body will be rendered below --}}
-    <main>
-        <div>
-            {{body}}
-        </div>
-    </main>
+        <main>
+            <div>
+                {{{ body }}}
+            </div>
+        </main>
+    </div>
     {{#if loggedIn}} 
-    <script src="../../public/js/logout.js"></script>
+    <script src="/js/logout.js"></script>
     {{/if}}
 </body>
 </html>
