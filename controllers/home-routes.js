@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../models/');
+const formatHelper = require('../utils/helpers');
 
 // get all posts for homepage
 router.get('/', async (req, res) => {
@@ -16,11 +17,12 @@ router.get('/', async (req, res) => {
 
     //Serialize data (use .get() method, or use raw: true, nest: true in query options)
     const post = postData.map((post) => {
-      post.get({ plain: true });
+      return post.get({ plain: true });
     });
 
     //Render the 'all-posts' template with the posts data
     res.render('all-posts', { post, loggedIn: req.session.loggedIn});
+    
 
   } catch (err) {
     res.status(500).json(err);
@@ -51,9 +53,10 @@ router.get('/post/:id', async (req, res) => {
 
     //Serialize data (use .get() method, or use raw: true, nest: true in query options)
     const post = postData.get({ plain: true });
+    
 
     //Render the 'single-post' template with the post data
-    res.render('single-post', {post, logged_in: req.session.loggedIn});
+    res.render('single-post', {post, loggedIn: req.session.loggedIn});
 
   } catch (err) {
     res.status(500).json(err);

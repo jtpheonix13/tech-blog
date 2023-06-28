@@ -11,11 +11,11 @@ router.get('/', withAuth, async (req, res) => {
     });
     // convert to plain data
     const posts = postData.map((post) => {
-      post.get({ plain: true });
+      return post.get({ plain: true });
     });
 
     // render dashboard page with posts
-    res.render('all-posts-admin', {posts, logged_in: req.session.logged_in, layout: 'dashboard'});
+    res.render('all-posts-admin', {posts, loggedIn: req.session.loggedIn, layout: 'dashboard'});
 
 
   } catch (err) {
